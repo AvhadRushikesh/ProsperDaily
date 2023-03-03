@@ -16,6 +16,6 @@ public partial class App : Application
 
         //MainPage = new NavigationPage(new DashboardPage());
 
-        MainPage = new StatisticsPage();
+        MainPage = new AppContainer();
     }
 }
