@@ -9,5 +9,12 @@ namespace ProsperDaily.MVVM.ViewModels
 {
     public class TransactionViewModel
     {
+        public Transaction Transaction { get; set; } = new Transaction();
+
+        public string SaveTransaction()
+        {
+            App.TransactionRepo.SaveItem(Transaction);
+            return App.TransactionRepo.StatusMessage;
+        }
     }
 }

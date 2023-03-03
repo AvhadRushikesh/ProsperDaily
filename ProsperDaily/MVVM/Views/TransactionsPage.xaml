@@ -21,14 +21,14 @@
                                  StyleClass="Padding25">
                 <Label Text="Transaction Name" />
                 <Frame StyleClass="FrameBorder">
-                    <Entry Text="Netflix Subscription" />
+                    <Entry Text="{Binding Transaction.Name}" />
                 </Frame>
                 <Label 
                     StyleClass="MarginT15"
                     Text="Amount" />
                 <Frame StyleClass="FrameBorder">
                     <Entry 
-                        Text="$49.00"
+                        Text="{Binding Transaction.Amount}"
                         VerticalOptions="End"
                         Keyboard="Numeric"/>
                 </Frame>
@@ -36,17 +36,25 @@
                     StyleClass="MarginT15"
                     Text="Transaction Date" />
                 <Frame StyleClass="FrameBorder">
-                    <DatePicker />
+                    <DatePicker Date="{Binding Transaction.TransactionDate}"/>
                 </Frame>
                 <HorizontalStackLayout>
-                    <CheckBox IsChecked="True" />
+                    <CheckBox IsChecked="{Binding Transaction.IsIncome}" />
                     <Label 
                         Text="Is Income ?" 
                         VerticalOptions="Center"/>
                 </HorizontalStackLayout>
 
-                <Button StyleClass="MarginT15" Text="Save" />
-                <Button StyleClass="MarginT15, RedControl" Text="Cancel" />
+                <Button 
+                    x:Name="Save"
+                    Text="Save" 
+                    StyleClass="MarginT15" 
+                    Clicked="Save_Clicked"/>
+                <Button 
+                    x:Name="Cancel" 
+                    Text="Cancel" 
+                    StyleClass="MarginT15, RedControl" 
+                    Clicked="Cancel_Clicked"/>
 
             </VerticalStackLayout>
             
