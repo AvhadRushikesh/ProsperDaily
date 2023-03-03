@@ -14,6 +14,8 @@ public partial class App : Application
 
         TransactionRepo = _transactionRepo;
 
-        MainPage = new NavigationPage(new DashboardPage());
+        //MainPage = new NavigationPage(new DashboardPage());
+
+        MainPage = new StatisticsPage();
     }
 }
