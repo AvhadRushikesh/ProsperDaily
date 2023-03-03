@@ -2,8 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProsperDaily.MVVM.Views.StatisticsPage"
+               xmlns:converters="clr-namespace:ProsperDaily.Converter"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
              Title="StatisticsPage">
+
+
+    <ContentPage.Resources>
+        <converters:AmountToCurrencyConverter x:Key="AmountConverter" />
+        <converters:AmountColorConverter x:Key="ColorConverter" />
+    </ContentPage.Resources>
+
 
     <Grid RowDefinitions=".15*, .15*, .30*, .40*">
         <RoundRectangle Grid.RowSpan="2" StyleClass="TopRectangle" />
@@ -55,7 +63,7 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.EmptyViewTemplate>
-
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" >
@@ -63,12 +71,18 @@
                             <Label
                                 Grid.Row="1"
                                 StyleClass="SmallFont"
-                                Text="{Binding OperationDate, StringFormat='{0:MM/dd/yyyy}'}" />
+                                Text="{Binding HumanDate}" />
+
+                            <Label x:Name="lblIsIncome"
+                                   IsVisible="False"
+                                   Text="{Binding IsIncome}" />
+
                             <Label
                                 Grid.RowSpan="2"
                                 Grid.Column="1"
                                 StyleClass="ListAmount"
-                                Text="{Binding Amount, StringFormat='{0:C}'}" />
+                                Text="{Binding Amount, Converter={StaticResource AmountConverter}, ConverterParameter={x:Reference lblIsIncome}}" 
+                                TextColor="{Binding Amount, Converter={StaticResource ColorConverter}, ConverterParameter={x:Reference lblIsIncome}}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

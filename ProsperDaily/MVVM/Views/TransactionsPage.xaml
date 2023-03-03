@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProsperDaily.MVVM.Views.TransactionsPage"
-             Title="TransactionsPage">
+             Title="TransactionsPage"
+             NavigationPage.HasNavigationBar="False">
 
     <Grid RowDefinitions=".15*,.15*,.70*">
         <RoundRectangle Grid.RowSpan="2"
@@ -36,7 +37,7 @@
                     StyleClass="MarginT15"
                     Text="Transaction Date" />
                 <Frame StyleClass="FrameBorder">
-                    <DatePicker Date="{Binding Transaction.TransactionDate}"/>
+                    <DatePicker Date="{Binding Transaction.OperationDate}"/>
                 </Frame>
                 <HorizontalStackLayout>
                     <CheckBox IsChecked="{Binding Transaction.IsIncome}" />

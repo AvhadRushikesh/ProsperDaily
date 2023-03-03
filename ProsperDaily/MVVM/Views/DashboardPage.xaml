@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:ProsperDaily.Converter"
              x:Class="ProsperDaily.MVVM.Views.DashboardPage"
-             Title="DashboardPage">
+             Title="DashboardPage"
+             NavigationPage.HasNavigationBar="False">
 
 
     <ContentPage.Resources>
@@ -84,7 +85,7 @@
                             <Label
                                 Grid.Row="1"
                                 StyleClass="SmallFont"
-                                Text="{Binding OperationDate, StringFormat='{0:MM/dd/yyyy}'}" />
+                                Text="{Binding HumanDate}" />
 
                             <Label x:Name="lblIsIncome"
                                    IsVisible="False"
